@@ -9,7 +9,7 @@ self.addEventListener('install', function(event) {
 self.addEventListener('fetch', function(event) {
     console.log('fetch-----');
     event.respondWith(
-        fetch(event.request).cache(() => {
+        fetch(event.request).catch(() => {
             return caches.match('./offline.html');
         })
     );

@@ -6,5 +6,11 @@ self.addEventListener('install', function(event) {
         })
     );
 });
-
-// self.addEventListener('fetch');
+self.addEventListener('fetch', function(event) {
+    console.log('fetch-----');
+    event.respondWith(
+        fetch(event.request).cache(() => {
+            return caches.match('./offline.html');
+        })
+    );
+});

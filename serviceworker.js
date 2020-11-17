@@ -19,7 +19,7 @@ self.addEventListener('fetch', function(event) {
     console.log('event.request.url', event.request.url);
     const url = new URL(event.request.url);
     if (url.origin === location.origin) {
-        if (url.pathname === `${publicPath}pig.jpg`) {
+        if (url.pathname.includes('pig.jpg')) {
             event.respondWith(caches.match(`${publicPath}pig-gif.gif`));
         }
         if (url.pathname === publicPath) {

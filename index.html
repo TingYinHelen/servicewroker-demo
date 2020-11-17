@@ -7,13 +7,20 @@
     <title>Document</title>
 </head>
 <body>
-    这是index页面
+    小猪
 </body>
 <script>
-    window.onload = function() {
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./serviceworker.js');
-        }
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./serviceworker.js')
+            .then(reg => console.log('sx registered!', reg))
+            .catch(err => console.log('error:--', err))
     }
+    setTimeout(() => {
+        const img = new Image();
+        img.src = '/pig.jpg';
+        img.width = 200;
+        document.body.appendChild(img);
+        console.log('controller:=====', navigator.serviceWorker.controller);
+    }, 3000)
 </script>
 </html>
